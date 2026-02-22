@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TourCardProps {
   image: string;
   title: string;
   price: string;
   duration: string;
+  slug: string;
 }
 
-const TourCard = ({ image, title, price, duration }: TourCardProps) => {
+const TourCard = ({ image, title, price, duration, slug }: TourCardProps) => {
+  const { t } = useLanguage();
+
   return (
-    <Link to="/tour-package" className="group block">
+    <Link to={`/tour-package/${slug}`} className="group block">
       <div className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
         <div className="aspect-[4/3] overflow-hidden">
           <img
@@ -25,9 +29,9 @@ const TourCard = ({ image, title, price, duration }: TourCardProps) => {
         </div>
       </div>
       <div className="mt-3 text-center">
-        <p className="text-xs text-muted-foreground">Start from</p>
+        <p className="text-xs text-muted-foreground">{t("tour.startFrom")}</p>
         <p className="text-lg font-bold text-foreground">
-          {price}<span className="text-sm font-normal text-muted-foreground">/pax</span>
+          {price}<span className="text-sm font-normal text-muted-foreground">{t("tour.pax")}</span>
         </p>
       </div>
     </Link>
