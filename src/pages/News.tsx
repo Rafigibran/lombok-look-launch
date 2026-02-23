@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Calendar, ArrowRight } from "lucide-react";
@@ -19,6 +20,7 @@ const News = () => {
       excerpt: isId ? "Temukan pantai-pantai paling menakjubkan dan terpencil yang ditawarkan Lombok." : "Discover the most stunning and secluded beaches that Lombok has to offer.",
       date: "Feb 15, 2026",
       category: isId ? "Tips Perjalanan" : "Travel Tips",
+      slug: "top-10-hidden-beaches",
     },
     {
       image: tour2,
@@ -26,6 +28,7 @@ const News = () => {
       excerpt: isId ? "Semua yang perlu Anda ketahui sebelum menaklukkan puncak tertinggi Lombok." : "Everything you need to know before conquering Lombok's highest peak.",
       date: "Feb 10, 2026",
       category: isId ? "Petualangan" : "Adventure",
+      slug: "mount-rinjani-trekking-guide",
     },
     {
       image: tour4,
@@ -33,6 +36,7 @@ const News = () => {
       excerpt: isId ? "Selami warisan budaya kaya suku Sasak dan tradisi berabad-abad mereka." : "Dive deep into the rich cultural heritage of the Sasak people.",
       date: "Feb 5, 2026",
       category: isId ? "Budaya" : "Culture",
+      slug: "sasak-culture-traditions",
     },
     {
       image: tour5,
@@ -40,6 +44,7 @@ const News = () => {
       excerpt: isId ? "Panduan lengkap air terjun paling memukau di hutan Lombok utara." : "A guide to the most breathtaking waterfalls in northern Lombok.",
       date: "Jan 28, 2026",
       category: isId ? "Alam" : "Nature",
+      slug: "best-waterfalls-north-lombok",
     },
     {
       image: tour3,
@@ -47,6 +52,7 @@ const News = () => {
       excerpt: isId ? "Dari Ayam Taliwang hingga Plecing Kangkung, jelajahi cita rasa unik masakan Lombok." : "From Ayam Taliwang to Plecing Kangkung, explore Lombok's cuisine.",
       date: "Jan 20, 2026",
       category: isId ? "Makanan" : "Food",
+      slug: "lombok-food-guide",
     },
   ];
 
@@ -70,42 +76,46 @@ const News = () => {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div className="rounded-xl overflow-hidden">
-              <img src={articles[0].image} alt={articles[0].title} className="w-full h-full object-cover min-h-[300px]" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <span className="inline-block text-xs font-semibold text-primary bg-teal-light px-3 py-1 rounded-full w-fit mb-4">
-                {articles[0].category}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{articles[0].title}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">{articles[0].excerpt}</p>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                <Calendar size={14} />
-                <span>{articles[0].date}</span>
+          <Link to={`/news/${articles[0].slug}`} className="block">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 group cursor-pointer">
+              <div className="rounded-xl overflow-hidden">
+                <img src={articles[0].image} alt={articles[0].title} className="w-full h-full object-cover min-h-[300px] group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <button className="inline-flex items-center gap-2 text-primary font-medium hover:text-teal-dark transition-colors w-fit">
-                {t("news.readMore")} <ArrowRight size={16} />
-              </button>
+              <div className="flex flex-col justify-center">
+                <span className="inline-block text-xs font-semibold text-primary bg-teal-light px-3 py-1 rounded-full w-fit mb-4">
+                  {articles[0].category}
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{articles[0].title}</h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">{articles[0].excerpt}</p>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+                  <Calendar size={14} />
+                  <span>{articles[0].date}</span>
+                </div>
+                <span className="inline-flex items-center gap-2 text-primary font-medium hover:text-teal-dark transition-colors w-fit">
+                  {t("news.readMore")} <ArrowRight size={16} />
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {articles.slice(1).map((article, i) => (
-              <article key={i} className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-border">
-                <div className="aspect-video overflow-hidden">
-                  <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-5">
-                  <span className="text-xs font-medium text-primary">{article.category}</span>
-                  <h3 className="text-sm font-semibold text-foreground mt-1 mb-2 line-clamp-2">{article.title}</h3>
-                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{article.excerpt}</p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Calendar size={12} />
-                    <span>{article.date}</span>
+              <Link key={i} to={`/news/${article.slug}`}>
+                <article className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-border h-full">
+                  <div className="aspect-video overflow-hidden">
+                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
-                </div>
-              </article>
+                  <div className="p-5">
+                    <span className="text-xs font-medium text-primary">{article.category}</span>
+                    <h3 className="text-sm font-semibold text-foreground mt-1 mb-2 line-clamp-2">{article.title}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{article.excerpt}</p>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Calendar size={12} />
+                      <span>{article.date}</span>
+                    </div>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>
