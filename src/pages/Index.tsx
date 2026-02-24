@@ -129,12 +129,14 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">{t("home.cta.title")}</h2>
           <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">{t("home.cta.subtitle")}</p>
-          <Link
-            to="/tour-package"
+          <a
+            href={`https://wa.me/6281234567890?text=${encodeURIComponent(t("nav.tourPackage") === "Paket Wisata" ? "Halo, saya tertarik dengan paket wisata Lombok. Mohon informasi lebih lanjut." : "Hello, I'm interested in Lombok tour packages. Please provide more information.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
           >
             {t("home.cta.book")} <ArrowRight size={18} />
-          </Link>
+          </a>
         </div>
       </section>
 

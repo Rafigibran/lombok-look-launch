@@ -340,7 +340,7 @@ const TourDetail = () => {
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href={`https://wa.me/6281234567890?text=${encodeURIComponent(language === "id" ? `Halo, saya tertarik dengan paket "${tour.title.id}" (${tour.duration.id}) seharga ${tour.price}/orang. Mohon informasi lebih lanjut.` : `Hello, I'm interested in the "${tour.title.en}" package (${tour.duration.en}) at ${tour.price}/person. Please provide more information.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-primary text-primary-foreground py-3 rounded-full text-sm font-semibold hover:bg-teal-dark transition-colors text-center"
