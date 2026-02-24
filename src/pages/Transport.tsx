@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import transportHero from "@/assets/transport-hero.jpg";
 
 const Transport = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const vehicles = [
     { name: "Toyota Avanza", capacity: `6 ${t("transport.passengers")}`, price: "Rp500.000", type: "MPV" },
@@ -59,9 +59,14 @@ const Transport = () => {
                   <p className="text-xs text-muted-foreground">{t("tour.startFrom")}</p>
                   <p className="text-xl font-bold text-foreground">{v.price}<span className="text-sm font-normal text-muted-foreground">{t("transport.day")}</span></p>
                 </div>
-                <button className="mt-4 w-full bg-primary text-primary-foreground py-2.5 rounded-full text-sm font-semibold hover:bg-teal-dark transition-colors">
+                <a
+                  href={`https://wa.me/6281234567890?text=${encodeURIComponent(language === "id" ? `Halo, saya ingin memesan ${v.name} (${v.type}) - ${v.capacity} dengan harga ${v.price}/hari. Mohon informasi lebih lanjut.` : `Hello, I would like to book ${v.name} (${v.type}) - ${v.capacity} at ${v.price}/day. Please provide more information.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 block w-full bg-primary text-primary-foreground py-2.5 rounded-full text-sm font-semibold hover:bg-teal-dark transition-colors text-center"
+                >
                   {t("transport.bookNow")}
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -84,21 +89,21 @@ const Transport = () => {
                 ))}
               </div>
             </div>
-            <div className="flex-1 flex justify-center gap-6">
-              <div className="bg-card rounded-xl p-8 text-center shadow-sm">
-                <Clock size={32} className="mx-auto text-primary mb-3" />
-                <h4 className="font-bold text-2xl text-foreground">24/7</h4>
-                <p className="text-sm text-muted-foreground">{t("transport.available")}</p>
+            <div className="flex-1 grid grid-cols-3 gap-4 sm:gap-6">
+              <div className="bg-card rounded-xl p-4 sm:p-8 text-center shadow-sm">
+                <Clock size={28} className="mx-auto text-primary mb-3" />
+                <h4 className="font-bold text-xl sm:text-2xl text-foreground">24/7</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("transport.available")}</p>
               </div>
-              <div className="bg-card rounded-xl p-8 text-center shadow-sm">
-                <Shield size={32} className="mx-auto text-primary mb-3" />
-                <h4 className="font-bold text-2xl text-foreground">100%</h4>
-                <p className="text-sm text-muted-foreground">{t("transport.insured")}</p>
+              <div className="bg-card rounded-xl p-4 sm:p-8 text-center shadow-sm">
+                <Shield size={28} className="mx-auto text-primary mb-3" />
+                <h4 className="font-bold text-xl sm:text-2xl text-foreground">100%</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("transport.insured")}</p>
               </div>
-              <div className="bg-card rounded-xl p-8 text-center shadow-sm">
-                <Car size={32} className="mx-auto text-primary mb-3" />
-                <h4 className="font-bold text-2xl text-foreground">50+</h4>
-                <p className="text-sm text-muted-foreground">{t("transport.vehicles")}</p>
+              <div className="bg-card rounded-xl p-4 sm:p-8 text-center shadow-sm">
+                <Car size={28} className="mx-auto text-primary mb-3" />
+                <h4 className="font-bold text-xl sm:text-2xl text-foreground">50+</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("transport.vehicles")}</p>
               </div>
             </div>
           </div>
