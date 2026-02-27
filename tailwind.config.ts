@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
-        display: ["Playfair Display", "serif"],
+        sans: ["DM Sans", "sans-serif"],
+        display: ["Cormorant Garamond", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -59,6 +59,10 @@ export default {
         orange: {
           DEFAULT: "hsl(var(--orange))",
           light: "hsl(var(--orange-light))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

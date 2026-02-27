@@ -60,57 +60,62 @@ const News = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      <section className="relative h-[40vh] min-h-[300px] bg-foreground">
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground to-foreground/90" />
-        <div className="relative h-full flex items-center justify-center text-center px-4">
+      <section className="relative h-[45vh] min-h-[350px] bg-foreground">
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground to-foreground/95" />
+        <div className="relative h-full flex items-center justify-center text-center px-6">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground animate-fade-in-up font-display">
-              {t("news.hero.title")} <span className="text-accent">{t("news.hero.titleAccent")}</span>
+            <p className="text-[11px] uppercase tracking-[0.5em] text-primary-foreground/30 mb-4 font-sans font-light animate-fade-in">
+              {isId ? "Cerita & Panduan" : "Stories & Guides"}
+            </p>
+            <h1 className="text-4xl md:text-6xl font-semibold text-primary-foreground animate-fade-in-up font-display">
+              {t("news.hero.title")} <span className="text-accent italic">{t("news.hero.titleAccent")}</span>
             </h1>
-            <p className="mt-4 text-primary-foreground/60 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <p className="mt-4 text-primary-foreground/40 animate-fade-in-up text-sm font-light" style={{ animationDelay: "0.2s" }}>
               {t("news.hero.subtitle")}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          {/* Featured article */}
           <Link to={`/news/${articles[0].slug}`} className="block">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 group cursor-pointer">
-              <div className="rounded-xl overflow-hidden">
-                <img src={articles[0].image} alt={articles[0].title} className="w-full h-full object-cover min-h-[300px] group-hover:scale-105 transition-transform duration-500" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 group cursor-pointer">
+              <div className="rounded-2xl overflow-hidden">
+                <img src={articles[0].image} alt={articles[0].title} className="w-full h-full object-cover min-h-[300px] group-hover:scale-105 transition-transform duration-700 ease-out" />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="inline-block text-xs font-semibold text-primary bg-teal-light px-3 py-1 rounded-full w-fit mb-4">
+                <span className="inline-block text-[10px] font-semibold text-primary uppercase tracking-widest w-fit mb-5">
                   {articles[0].category}
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{articles[0].title}</h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">{articles[0].excerpt}</p>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                  <Calendar size={14} />
+                <h2 className="text-2xl md:text-4xl font-semibold text-foreground mb-5 font-display leading-tight">{articles[0].title}</h2>
+                <p className="text-muted-foreground leading-relaxed mb-5 font-light">{articles[0].excerpt}</p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-6">
+                  <Calendar size={12} />
                   <span>{articles[0].date}</span>
                 </div>
-                <span className="inline-flex items-center gap-2 text-primary font-medium hover:text-teal-dark transition-colors w-fit">
-                  {t("news.readMore")} <ArrowRight size={16} />
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-foreground/60 group-hover:text-primary transition-colors duration-300 font-medium w-fit">
+                  {t("news.readMore")} <ArrowRight size={14} />
                 </span>
               </div>
             </div>
           </Link>
 
+          {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {articles.slice(1).map((article, i) => (
               <Link key={i} to={`/news/${article.slug}`}>
-                <article className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-border h-full">
+                <article className="bg-card rounded-2xl overflow-hidden premium-shadow hover:-translate-y-1 transition-all duration-500 group cursor-pointer border border-border/50 h-full">
                   <div className="aspect-video overflow-hidden">
-                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   </div>
-                  <div className="p-5">
-                    <span className="text-xs font-medium text-primary">{article.category}</span>
-                    <h3 className="text-sm font-semibold text-foreground mt-1 mb-2 line-clamp-2">{article.title}</h3>
-                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{article.excerpt}</p>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Calendar size={12} />
+                  <div className="p-6">
+                    <span className="text-[10px] font-medium text-primary uppercase tracking-widest">{article.category}</span>
+                    <h3 className="text-sm font-semibold text-foreground mt-2 mb-3 line-clamp-2 font-display">{article.title}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-4 font-light">{article.excerpt}</p>
+                    <div className="flex items-center gap-2 text-[11px] text-muted-foreground/60">
+                      <Calendar size={11} />
                       <span>{article.date}</span>
                     </div>
                   </div>
