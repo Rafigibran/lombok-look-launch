@@ -32,20 +32,15 @@ const TourPackage = () => {
 
   const filteredTours = useMemo(() => {
     return tours.filter((tour) => {
-      // Destination filter
       if (activeFilters.destination) {
         const query = activeFilters.destination.toLowerCase();
-        if (!tour.title.toLowerCase().includes(query) && !tour.slug.toLowerCase().includes(query)) {
-          return false;
-        }
+        if (!tour.title.toLowerCase().includes(query) && !tour.slug.toLowerCase().includes(query)) return false;
       }
-      // Duration filter
       if (activeFilters.duration) {
         if (activeFilters.duration === "1-2" && tour.days > 2) return false;
         if (activeFilters.duration === "3-4" && (tour.days < 3 || tour.days > 4)) return false;
         if (activeFilters.duration === "5+" && tour.days < 5) return false;
       }
-      // Guests filter
       if (activeFilters.guests) {
         if (activeFilters.guests === "1-2" && tour.maxGuests < 2) return false;
         if (activeFilters.guests === "3-5" && tour.maxGuests < 3) return false;
@@ -66,17 +61,22 @@ const TourPackage = () => {
       <section className="relative h-[60vh] min-h-[400px]">
         <img src={heroTour} alt="Tour packages" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
-        <div className="relative h-full flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground text-shadow text-center animate-fade-in-up font-display">
-            {t("tour.hero.title1")}<br />{t("tour.hero.title2")}
-          </h1>
+        <div className="relative h-full flex items-center justify-center text-center px-6">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.5em] text-primary-foreground/50 mb-4 font-sans font-light animate-fade-in">
+              {isId ? "Pengalaman Eksklusif" : "Exclusive Experiences"}
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-primary-foreground text-shadow animate-fade-in-up font-display leading-[0.95]">
+              {t("tour.hero.title1")}<br />{t("tour.hero.title2")}
+            </h1>
+          </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-10">
-            <div className="lg:sticky lg:top-8 lg:self-start">
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-12">
+            <div className="lg:sticky lg:top-24 lg:self-start">
               <SearchFilter
                 destination={destination}
                 duration={duration}
@@ -95,9 +95,9 @@ const TourPackage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20">
-                  <p className="text-muted-foreground text-lg">{isId ? "Tidak ada tur yang ditemukan" : "No tours found"}</p>
-                  <p className="text-muted-foreground/60 text-sm mt-2">{isId ? "Coba ubah filter pencarian Anda" : "Try adjusting your search filters"}</p>
+                <div className="text-center py-24">
+                  <p className="text-muted-foreground text-lg font-display">{isId ? "Tidak ada tur yang ditemukan" : "No tours found"}</p>
+                  <p className="text-muted-foreground/50 text-sm mt-2 font-light">{isId ? "Coba ubah filter pencarian Anda" : "Try adjusting your search filters"}</p>
                 </div>
               )}
             </div>

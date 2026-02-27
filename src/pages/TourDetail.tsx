@@ -30,7 +30,7 @@ const tourData: Record<string, {
     groupSize: "2-10",
     overview: {
       en: "Explore the best of Lombok in this carefully curated 3-day adventure. Visit stunning beaches, traditional Sasak villages, breathtaking waterfalls, and the famous Gili Islands. Perfect for those who want a comprehensive Lombok experience.",
-      id: "Jelajahi yang terbaik dari Lombok dalam petualangan 3 hari yang dikurasi dengan cermat. Kunjungi pantai yang menakjubkan, desa Sasak tradisional, air terjun yang menakjubkan, dan Kepulauan Gili yang terkenal. Sempurna bagi mereka yang menginginkan pengalaman Lombok yang komprehensif."
+      id: "Jelajahi yang terbaik dari Lombok dalam petualangan 3 hari yang dikurasi dengan cermat. Kunjungi pantai yang menakjubkan, desa Sasak tradisional, air terjun yang menakjubkan, dan Kepulauan Gili yang terkenal."
     },
     itinerary: [
       { day: 1, title: { en: "Arrival & South Lombok", id: "Kedatangan & Lombok Selatan" }, desc: { en: "Airport pickup, visit Kuta Mandalika Beach, Tanjung Aan, and Merese Hill for sunset.", id: "Jemput bandara, kunjungi Pantai Kuta Mandalika, Tanjung Aan, dan Bukit Merese untuk sunset." } },
@@ -59,8 +59,8 @@ const tourData: Record<string, {
     duration: { en: "3 Days 2 Nights", id: "3 Hari 2 Malam" },
     groupSize: "2-10",
     overview: {
-      en: "An alternative 3-day Lombok itinerary focusing on the northern and eastern parts of the island. Experience Mount Rinjani's foothills, traditional weaving villages, and pristine beaches.",
-      id: "Itinerari alternatif 3 hari Lombok yang berfokus pada bagian utara dan timur pulau. Rasakan kaki Gunung Rinjani, desa tenun tradisional, dan pantai yang masih alami."
+      en: "An alternative 3-day Lombok itinerary focusing on the northern and eastern parts of the island.",
+      id: "Itinerari alternatif 3 hari Lombok yang berfokus pada bagian utara dan timur pulau."
     },
     itinerary: [
       { day: 1, title: { en: "Arrival & North Lombok", id: "Kedatangan & Lombok Utara" }, desc: { en: "Airport pickup, drive to Senaru village, visit local waterfalls.", id: "Jemput bandara, perjalanan ke desa Senaru, kunjungi air terjun lokal." } },
@@ -114,7 +114,7 @@ const tourData: Record<string, {
     groupSize: "2-8",
     overview: {
       en: "Immerse yourself in Lombok's rich Sasak culture over 4 incredible days. Visit traditional villages, witness ancient ceremonies, learn local crafts, and taste authentic cuisine.",
-      id: "Benamkan diri Anda dalam budaya Sasak Lombok yang kaya selama 4 hari yang luar biasa. Kunjungi desa tradisional, saksikan upacara kuno, pelajari kerajinan lokal, dan cicipi masakan autentik."
+      id: "Benamkan diri Anda dalam budaya Sasak Lombok yang kaya selama 4 hari yang luar biasa."
     },
     itinerary: [
       { day: 1, title: { en: "Arrival & Mataram City", id: "Kedatangan & Kota Mataram" }, desc: { en: "Explore Mataram city, visit Mayura Water Palace and Pura Meru temple.", id: "Jelajahi kota Mataram, kunjungi Istana Air Mayura dan Pura Meru." } },
@@ -143,7 +143,7 @@ const tourData: Record<string, {
     groupSize: "2-15",
     overview: {
       en: "A thrilling one-day adventure to Lombok's most spectacular waterfalls. Trek through lush tropical forests and cool off in crystal-clear natural pools.",
-      id: "Petualangan satu hari yang mendebarkan ke air terjun paling spektakuler di Lombok. Trek melalui hutan tropis yang rimbun dan menyejukkan diri di kolam alami yang jernih."
+      id: "Petualangan satu hari yang mendebarkan ke air terjun paling spektakuler di Lombok."
     },
     itinerary: [
       { day: 1, title: { en: "Waterfall Trekking", id: "Trekking Air Terjun" }, desc: { en: "Visit Tiu Kelep, Sendang Gile, and Benang Stokel waterfalls with swimming stops.", id: "Kunjungi air terjun Tiu Kelep, Sendang Gile, dan Benang Stokel dengan pemberhentian berenang." } },
@@ -168,7 +168,7 @@ const tourData: Record<string, {
     groupSize: "2-12",
     overview: {
       en: "Discover the underwater paradise of the Gili Islands. Snorkel with sea turtles, explore vibrant coral reefs, and enjoy the laid-back island atmosphere.",
-      id: "Temukan surga bawah laut Kepulauan Gili. Snorkeling dengan penyu laut, jelajahi terumbu karang yang semarak, dan nikmati suasana pulau yang santai."
+      id: "Temukan surga bawah laut Kepulauan Gili. Snorkeling dengan penyu laut, jelajahi terumbu karang yang semarak."
     },
     itinerary: [
       { day: 1, title: { en: "Gili Trawangan", id: "Gili Trawangan" }, desc: { en: "Boat to Gili T, snorkeling tour around 3 Gilis, sunset at beach bar.", id: "Perahu ke Gili T, tur snorkeling sekitar 3 Gili, sunset di bar pantai." } },
@@ -199,9 +199,9 @@ const TourDetail = () => {
     return (
       <div className="min-h-screen">
         <Navbar />
-        <div className="pt-32 pb-20 text-center">
-          <h1 className="text-2xl font-bold text-foreground">Tour not found</h1>
-          <Link to="/tour-package" className="text-primary mt-4 inline-block">← Back to Tours</Link>
+        <div className="pt-40 pb-20 text-center">
+          <h1 className="text-2xl font-semibold text-foreground font-display">Tour not found</h1>
+          <Link to="/tour-package" className="text-primary mt-4 inline-block text-sm">← Back to Tours</Link>
         </div>
         <Footer />
       </div>
@@ -212,106 +212,95 @@ const TourDetail = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative h-[50vh] min-h-[350px]">
+      <section className="relative h-[55vh] min-h-[400px]">
         <img src={tour.image} alt={tour.title[language]} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
-        <div className="relative h-full flex items-end pb-12">
-          <div className="container mx-auto px-4">
-            <Link to="/tour-package" className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground mb-4 text-sm transition-colors">
-              <ArrowLeft size={16} /> {t("nav.tourPackage")}
+        <div className="relative h-full flex items-end pb-14">
+          <div className="container mx-auto px-6">
+            <Link to="/tour-package" className="inline-flex items-center gap-2 text-primary-foreground/50 hover:text-primary-foreground mb-4 text-xs uppercase tracking-widest transition-colors duration-300">
+              <ArrowLeft size={14} /> {t("nav.tourPackage")}
             </Link>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-shadow font-display">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold text-primary-foreground text-shadow font-display leading-[0.95]">
               {tour.title[language]}
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-10">
-            {/* Main Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-12">
             <div className="flex-1">
               {/* Quick Info */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-secondary rounded-xl p-4 text-center">
-                  <Clock size={20} className="mx-auto text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">{t("detail.duration")}</p>
-                  <p className="text-sm font-semibold text-foreground">{tour.duration[language]}</p>
-                </div>
-                <div className="bg-secondary rounded-xl p-4 text-center">
-                  <Users size={20} className="mx-auto text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">{t("detail.groupSize")}</p>
-                  <p className="text-sm font-semibold text-foreground">{tour.groupSize} {t("detail.persons")}</p>
-                </div>
-                <div className="bg-secondary rounded-xl p-4 text-center">
-                  <MapPin size={20} className="mx-auto text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">{t("detail.pickup")}</p>
-                  <p className="text-sm font-semibold text-foreground">{t("detail.allAreas")}</p>
-                </div>
-                <div className="bg-secondary rounded-xl p-4 text-center">
-                  <Globe size={20} className="mx-auto text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">{t("detail.language")}</p>
-                  <p className="text-sm font-semibold text-foreground">{t("detail.engIndo")}</p>
-                </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                {[
+                  { icon: Clock, label: t("detail.duration"), value: tour.duration[language] },
+                  { icon: Users, label: t("detail.groupSize"), value: `${tour.groupSize} ${t("detail.persons")}` },
+                  { icon: MapPin, label: t("detail.pickup"), value: t("detail.allAreas") },
+                  { icon: Globe, label: t("detail.language"), value: t("detail.engIndo") },
+                ].map((item, i) => (
+                  <div key={i} className="bg-secondary rounded-2xl p-5 text-center border border-border/50">
+                    <item.icon size={18} className="mx-auto text-primary mb-2" />
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{item.label}</p>
+                    <p className="text-sm font-semibold text-foreground mt-1">{item.value}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Tabs */}
               <Tabs defaultValue="overview">
                 <TabsList className="w-full justify-start bg-transparent border-b border-border rounded-none p-0 h-auto">
-                  <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3">
+                  <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3 text-xs uppercase tracking-widest">
                     {t("detail.overview")}
                   </TabsTrigger>
-                  <TabsTrigger value="itinerary" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3">
+                  <TabsTrigger value="itinerary" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3 text-xs uppercase tracking-widest">
                     {t("detail.itinerary")}
                   </TabsTrigger>
-                  <TabsTrigger value="includes" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3">
+                  <TabsTrigger value="includes" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-6 py-3 text-xs uppercase tracking-widest">
                     {t("detail.includes")}
                   </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="overview" className="pt-6">
-                  <p className="text-muted-foreground leading-relaxed">{tour.overview[language]}</p>
+                <TabsContent value="overview" className="pt-8">
+                  <p className="text-muted-foreground leading-relaxed font-light">{tour.overview[language]}</p>
                 </TabsContent>
 
-                <TabsContent value="itinerary" className="pt-6">
-                  <div className="space-y-6">
+                <TabsContent value="itinerary" className="pt-8">
+                  <div className="space-y-8">
                     {tour.itinerary.map((item) => (
-                      <div key={item.day} className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
+                      <div key={item.day} className="flex gap-5">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground text-primary-foreground flex items-center justify-center font-bold text-xs uppercase tracking-wider font-sans">
                           {t("detail.day")} {item.day}
                         </div>
                         <div className="pt-1">
-                          <h4 className="font-semibold text-foreground">{item.title[language]}</h4>
-                          <p className="text-sm text-muted-foreground mt-1">{item.desc[language]}</p>
+                          <h4 className="font-semibold text-foreground font-display text-lg">{item.title[language]}</h4>
+                          <p className="text-sm text-muted-foreground mt-1 font-light">{item.desc[language]}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </TabsContent>
 
-                <TabsContent value="includes" className="pt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <TabsContent value="includes" className="pt-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div>
-                      <h4 className="font-semibold text-foreground mb-4">{t("detail.includes")}</h4>
+                      <h4 className="font-semibold text-foreground mb-5 font-display text-lg">{t("detail.includes")}</h4>
                       <div className="space-y-3">
                         {tour.includes.map((item, i) => (
                           <div key={i} className="flex items-center gap-3">
-                            <CheckCircle size={18} className="text-primary flex-shrink-0" />
-                            <span className="text-sm text-foreground">{item[language]}</span>
+                            <CheckCircle size={16} className="text-primary flex-shrink-0" />
+                            <span className="text-sm text-foreground font-light">{item[language]}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-4">{t("detail.excludes")}</h4>
+                      <h4 className="font-semibold text-foreground mb-5 font-display text-lg">{t("detail.excludes")}</h4>
                       <div className="space-y-3">
                         {tour.excludes.map((item, i) => (
                           <div key={i} className="flex items-center gap-3">
-                            <XCircle size={18} className="text-destructive flex-shrink-0" />
-                            <span className="text-sm text-foreground">{item[language]}</span>
+                            <XCircle size={16} className="text-destructive/60 flex-shrink-0" />
+                            <span className="text-sm text-foreground font-light">{item[language]}</span>
                           </div>
                         ))}
                       </div>
@@ -321,21 +310,21 @@ const TourDetail = () => {
               </Tabs>
             </div>
 
-            {/* Sidebar - Booking Card */}
+            {/* Sidebar */}
             <div className="lg:w-80">
-              <div className="bg-card rounded-xl shadow-lg p-6 lg:sticky lg:top-8">
-                <p className="text-sm text-muted-foreground">{t("detail.pricePerPerson")}</p>
-                <p className="text-3xl font-bold text-foreground mt-1">
-                  {tour.price}<span className="text-sm font-normal text-muted-foreground">{t("tour.pax")}</span>
+              <div className="bg-card rounded-2xl premium-shadow p-8 lg:sticky lg:top-24 border border-border/50">
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{t("detail.pricePerPerson")}</p>
+                <p className="text-3xl font-bold text-foreground mt-2 font-display">
+                  {tour.price}<span className="text-xs font-normal text-muted-foreground ml-1 font-sans">{t("tour.pax")}</span>
                 </p>
-                <div className="my-6 border-t border-border" />
-                <div className="space-y-3 mb-6">
+                <div className="my-7 border-t border-border" />
+                <div className="space-y-4 mb-7">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{t("detail.duration")}</span>
+                    <span className="text-muted-foreground font-light">{t("detail.duration")}</span>
                     <span className="text-foreground font-medium">{tour.duration[language]}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{t("detail.groupSize")}</span>
+                    <span className="text-muted-foreground font-light">{t("detail.groupSize")}</span>
                     <span className="text-foreground font-medium">{tour.groupSize} {t("detail.persons")}</span>
                   </div>
                 </div>
@@ -343,7 +332,7 @@ const TourDetail = () => {
                   href={`https://wa.me/6281234567890?text=${encodeURIComponent(language === "id" ? `Halo, saya tertarik dengan paket "${tour.title.id}" (${tour.duration.id}) seharga ${tour.price}/orang. Mohon informasi lebih lanjut.` : `Hello, I'm interested in the "${tour.title.en}" package (${tour.duration.en}) at ${tour.price}/person. Please provide more information.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-primary text-primary-foreground py-3 rounded-full text-sm font-semibold hover:bg-teal-dark transition-colors text-center"
+                  className="block w-full gold-gradient text-accent-foreground py-3.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90 transition-all duration-300 text-center"
                 >
                   {t("detail.contactUs")}
                 </a>
